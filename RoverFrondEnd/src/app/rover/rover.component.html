@@ -1,0 +1,79 @@
+
+<div class="container mt-4">
+<h1>Rover Navigation</h1>
+<form>
+    <div class="form-group">
+      <label>Rover X Coordinate</label>
+      <input type="text" [(ngModel)]="x" [ngModelOptions]="{standalone: true}"  class="form-control" id="name" placeholder="Enter Coordinate">
+    </div>
+ 
+
+    <div class="form-group">
+        <label>Rover Y Coordinate</label>
+        <input type="text" [(ngModel)]="y" [ngModelOptions]="{standalone: true}"  class="form-control" id="address" placeholder="Enter Coordinate">
+    </div>
+ 
+    <div class="form-group">
+        <label>Enter Initial Direction</label>
+        <input type="text" [(ngModel)]="direction" [ngModelOptions]="{standalone: true}" class="form-control" id="mobile" placeholder="Enter Direction">
+    </div>
+    
+    <div class="form-group">
+        <label>Enter Path</label>
+        <input type="text" [(ngModel)]="path" [ngModelOptions]="{standalone: true}" class="form-control" id="mobile" placeholder="Enter Path">
+    </div>
+
+
+    <button type="submit" class="btn btn-primary mt-4" (click)="save()" >Play</button>
+  </form>
+</div> 
+
+
+<div>
+ 
+ 
+    <div class="container mt-4" >
+ 
+        <h1>Rover History</h1>
+ 
+ 
+ 
+ 
+    <table class="table">
+        <thead>
+         <h1 *ngIf="!isResultLoaded">Loading.................</h1>
+        <tr>
+            <th scope="col">ID</th>
+            <th scope="col">X</th>
+            <th scope="col">Y</th>
+            <th scope="col">Direction</th>
+            <th scope="col">Path</th>
+            <th scope="col">Final Destination</th>
+            <th scope="col">Time</th>
+          </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let RoverDetails of RoverHistory">
+ 
+            <th scope="row">{{RoverDetails.roverid  }}</th>
+            <td>{{RoverDetails.x}}</td>
+            <td>{{RoverDetails.y}}</td>
+            <td>{{RoverDetails.direction  | uppercase }}</td>
+            <td>{{RoverDetails.path  | uppercase}}</td>
+            <td>{{RoverDetails.destination }}</td>
+            <td>{{RoverDetails.lastUpdate }}</td>
+ 
+            <td>
+              <button type="button" class="btn btn-success" (click)="setUpdate(RoverDetails)">Replay</button>
+              
+              <button type="button" class="btn btn-danger" (click)="setDelete(RoverDetails)">Delete</button>
+            
+            </td>
+          </tr>
+          
+        </tbody>
+      </table>
+ 
+ 
+    </div>
+  
